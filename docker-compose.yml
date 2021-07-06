@@ -1,0 +1,16 @@
+version: '3'
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.multistage
+    ports:
+      - 3000:3000
+    container_name: react-express-client-prod
+    depends_on:
+      - server
+  server:
+    build: ./server
+    ports:
+      - 5000:5000
+    container_name: react-express-server-prod
