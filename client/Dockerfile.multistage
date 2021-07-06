@@ -1,0 +1,13 @@
+FROM node:16-alpine3.11 AS build
+LABEL maintainer="joseph@josephephillips.com"
+WORKDIR /client
+COPY package.json package-lock.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+FROM node:16-alpine3.11
+RUN npm install -g serve
+COPY --from=build /client/build /client
+EXPOSE 3000
+CMD serve -s /client -l 3000
