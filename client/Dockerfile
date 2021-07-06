@@ -1,6 +1,6 @@
-FROM node:12.8.0-alpine
+FROM node:16-alpine3.11
 WORKDIR /client
-COPY package.json package-lock.json ./
+COPY package*.json ./
 RUN npm install
 COPY . .
 EXPOSE 3000
