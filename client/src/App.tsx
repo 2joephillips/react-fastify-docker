@@ -1,8 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import logo from './logo.svg';
 
 function App() {
+  fetch('http://localhost:5000/ping').then((res) => console.log(res));
   return (
     <div className="App">
       <header className="App-header">
